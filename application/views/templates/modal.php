@@ -232,19 +232,19 @@
                     <input type="date" class="form-control" name="datearray" required id="trainee_date" value="<?=date('Y-m-d');?>">
                 </div>            
                 <div class="form-group mb-1"> 
-                    <label class="col-sm-2 control-label">Last Name</label>
+                    <label class="col-sm-2 control-label">Name</label>
                     <input type="text" class="form-control" name="lastname" required id="trainee_lastname">
                 </div>
-                <div class="form-group mb-1">                    
+                <!-- <div class="form-group mb-1">                    
                     <label class="col-sm-2 control-label">First Name</label>
                     <input type="text" class="form-control" name="firstname" required id="trainee_firstname">
-                </div>
+                </div> -->
                 <div class="form-group mb-1">
                     <label class="col-sm-3 control-label">Type</label>
                     <select name="type" class="form-select" id="trainee_type">
                         <option value="PDC">Practical Driving Course</option>
                         <option value="TDC">Theoretical Driving Course`</option>
-                        <option value="Add Code">Add Code</option>
+                        <option value="AddCode">Add Code</option>
                     </select>
                 </div>
                 <div class="form-group mb-1">

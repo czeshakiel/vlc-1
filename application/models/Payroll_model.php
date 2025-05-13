@@ -228,7 +228,7 @@
                 $empid=date('YmdHis');
             }
             $lastname=$this->input->post("lastname");
-            $firstname=$this->input->post("firstname");
+            // $firstname=$this->input->post("firstname");
             $type=$this->input->post("type");
             $code=$this->input->post("code");
             $amount=$this->input->post("amount");
@@ -239,17 +239,17 @@
             $status=$this->input->post("status");
             $remarks=$this->input->post("remarks");
             $loginuser=$this->session->fullname;
-            $check_exist=$this->db->query("SELECT * FROM customer WHERE lastname='$lastname' AND firstname='$firstname' AND id <> '$id' AND `type`='$type'");
-            if($check_exist->num_rows() > 0){
-            }else{
+            // $check_exist=$this->db->query("SELECT * FROM customer WHERE lastname='$lastname' AND firstname='$firstname' AND id <> '$id' AND `type`='$type'");
+            // if($check_exist->num_rows() > 0){
+            // }else{
                 if($id==""){
-                    $result=$this->db->query("INSERT INTO customer(controlno,lastname,firstname,`type`,code,amount,commissioner,`status`,datearray,timearray,login_user,branch,remarks) VALUES('$empid','$lastname','$firstname','$type','$code','$amount','$commissioner','$status','$datearray','$timearray','$loginuser','$branch','$remarks')");
+                    $result=$this->db->query("INSERT INTO customer(controlno,lastname,firstname,`type`,code,amount,commissioner,`status`,datearray,timearray,login_user,branch,remarks) VALUES('$empid','$lastname','','$type','$code','$amount','$commissioner','$status','$datearray','$timearray','$loginuser','$branch','$remarks')");
                     $result=$this->db->query("INSERT INTO commissionerdetails(comm_id,trainee_id,datearray,timearray) VALUES('$commissioner','$empid','$datearray','$timearray')");
                 }else{
-                    $result=$this->db->query("UPDATE customer SET lastname='$lastname',firstname='$firstname',`type`='$type',code='$code',amount='$amount',commissioner='$commissioner',`status`='$status',branch='$branch',remarks='$remarks' WHERE id='$id'");
+                    $result=$this->db->query("UPDATE customer SET lastname='$lastname',firstname='',`type`='$type',code='$code',amount='$amount',commissioner='$commissioner',`status`='$status',branch='$branch',remarks='$remarks' WHERE id='$id'");
                     $result=$this->db->query("UPDATE commissionerdetails SET comm_id='$commissioner' WHERE trainee_id='$empid'");
                 }
-            }            
+           // }            
             if($result){
                 return true;
             }else{

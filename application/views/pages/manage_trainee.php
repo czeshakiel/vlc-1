@@ -41,9 +41,11 @@
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                     <li class="dropdown-header text-start">
                       <h6>Action</h6>
-                    </li>
-
-                    <li><a class="dropdown-item addTrainee" href="#" data-bs-toggle="modal" data-bs-target="#managetrainee">Add Trainee</a></li>                    
+                    </li>                  
+                    <!-- <li><a class="dropdown-item addTrainee" href="#" data-bs-toggle="modal" data-bs-target="#managetrainee">Add Trainee</a></li> -->
+                    <li><a class="dropdown-item" href="<?=base_url('add_trainee/TDC/'.$datenow);?>">Add Trainee TDC</a></li>
+                    <li><a class="dropdown-item" href="<?=base_url('add_trainee/PDC/'.$datenow);?>">Add Trainee PDC</a></li>
+                    <li><a class="dropdown-item" href="<?=base_url('add_trainee/AddCode/'.$datenow);?>">Add Code</a></li>
                   </ul>
                 </div>
               <h5 class="card-title">List of Trainee <span>| Today
@@ -65,8 +67,8 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>                  
-                    <th scope="col">Last Name</th>
-                    <th scope="col">First Name</th>
+                    <th scope="col">Name</th>
+                    <!-- <th scope="col">First Name</th> -->
                     <th scope="col">Type</th>                    
                     <th scope="col">Code</th>
                     <th scope="col">Amount</th>
@@ -83,7 +85,7 @@
                             echo "<tr>";
                                 echo "<td>$x.</td>";                                
                                 echo "<td>$branch[lastname]</td>";
-                                echo "<td>$branch[firstname]</td>";
+                                // echo "<td>$branch[firstname]</td>";
                                 echo "<td>$branch[type]</td>";
                                 echo "<td>$branch[code]</td>";
                                 echo "<td align='right'>".number_format($branch['amount'],2)."</td>";

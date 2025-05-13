@@ -173,7 +173,7 @@
             document.getElementById("trainee_id").value=id;            
             document.getElementById("trainee_controlno").value=response[0]['controlno'];
             document.getElementById("trainee_lastname").value=response[0]['lastname'];
-            document.getElementById("trainee_firstname").value=response[0]['firstname'];
+            //document.getElementById("trainee_firstname").value=response[0]['firstname'];
             document.getElementById("trainee_type").value=response[0]['type'];
             document.getElementById("trainee_code").value=response[0]['code'];
             document.getElementById("trainee_amount").value=response[0]['amount'];            

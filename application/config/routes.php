@@ -69,13 +69,14 @@ $route['payroll_manager/(:any)'] = 'pages/payroll_manager/$1';
 $route['post_payroll'] = 'pages/post_payroll';
 $route['create_payroll'] = 'pages/create_payroll';
 $route['manage_payroll'] = 'pages/manage_payroll';
-//========================Trainee Module=======================================
+//========================Advances Module=======================================
 $route['view_advance_payment/(:any)'] = 'pages/view_advance_payment/$1';
 $route['view_advances/(:any)'] = 'pages/view_advances/$1';
 $route['delete_advances/(:any)/(:any)'] = 'pages/delete_advances/$1/$2';
 $route['save_advances'] = 'pages/save_advances';
 $route['manage_advances'] = 'pages/manage_advances';
 //========================Trainee Module=======================================
+$route['add_trainee/(:any)/(:any)'] = 'pages/add_trainee/$1/$2';
 $route['search_balance'] = 'pages/search_balance';
 $route['delete_balance/(:any)/(:any)'] = 'pages/delete_balance/$1/$2';
 $route['save_balance'] = 'pages/save_balance';
