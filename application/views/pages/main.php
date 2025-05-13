@@ -220,6 +220,7 @@
                           echo "<td align='center'>$item[t_status]</td>";
                           echo "<td align='center'>$item[remarks]</td>";
                         echo "</tr>";
+                        $x++;
                       }
                       ?>
                     </tbody>
