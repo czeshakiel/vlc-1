@@ -390,7 +390,7 @@
       document.getElementById('adjust_empid').value = id[3];      
     });    
     $(window).on('load', function(){      
-    setTimeout(removeLoader, 2000); //wait for page load PLUS two seconds.    
+    setTimeout(removeLoader, 300); //wait for page load PLUS two seconds.    
   });
   function removeLoader(){
     

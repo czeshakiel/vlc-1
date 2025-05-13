@@ -57,7 +57,7 @@
               <?=form_close();?>
               <a href="<?=base_url();?>unpost_payroll/<?=$payroll_period;?>" class="btn btn-warning" onclick="return confirm('Do you wish to unpost this payroll?'); return false;" <?=$open;?>>Unpost Payroll</a>
             </div>              
-            <div style="width:100vw;height:100vh; position:fixed;" id="loader">
+            <!-- <div style="width:100vw;height:100vh; position:fixed;" id="loader">
                 <div class="wavy-text">
                 <span>L</span>
                 <span>o</span>
@@ -69,7 +69,7 @@
                 <span>.</span>
                 <span>.</span>
                 </div>
-              </div>
+              </div> -->
               <!-- Default Table -->
               <table class="table">
                 <thead>

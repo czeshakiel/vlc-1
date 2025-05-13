@@ -47,19 +47,7 @@
                   </ul>
                 </div>
               <h5 class="card-title">List of Employee</h5>         
-              <div style="width:100vw;height:100vh; position:fixed;" id="loader">
-                <div class="wavy-text">
-                <span>L</span>
-                <span>o</span>
-                <span>a</span>
-                <span>d</span>
-                <span>i</span>
-                <span>n</span>
-                <span>g</span>
-                <span>.</span>
-                <span>.</span>
-                </div>
-              </div>     
+                  
               <!-- Default Table -->
               <table class="table datatable">
                 <thead>

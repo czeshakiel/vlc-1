@@ -1,7 +1,23 @@
-<body>
+<body>   
+  <!-- <div class="fixed-top align-items-center" style="width:140%;height:150%; background-color: white;" id="loader">
+              <div class="wavy-text">
+                <span>L</span>
+                <span>o</span>
+                <span>a</span>
+                <span>d</span>
+                <span>i</span>
+                <span>n</span>
+                <span>g</span>
+                <span>.</span>
+                <span>.</span>
+                </div>
+              </div> -->
+              <div class="html fixed-top" id="loader">
+                <div class="body">
+                </div>
+              </div>
   <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
-
+  <header id="header" class="header fixed-top d-flex align-items-center">  
     <div class="d-flex align-items-center justify-content-between">
       <a href="<?=base_url();?>" class="logo d-flex align-items-center">
         <img src="<?=base_url();?>design/assets/img/vlc.jpg" alt="">
@@ -233,3 +249,4 @@
     </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->  
+  

@@ -26,6 +26,7 @@
   <link href="<?=base_url();?>design/assets/css/style.css" rel="stylesheet">
   <link href="<?=base_url();?>design/assets/css/menu.css" rel="stylesheet">
   <link href="<?=base_url();?>design/assets/css/loader.css" rel="stylesheet">
+  <link href="<?=base_url();?>design/assets/css/loadercar.css" rel="stylesheet">
   <link rel="icon" href="<?=base_url();?>design/assets/img/vlc.jpg" type="img/png">   
   <!-- =======================================================
   * Template Name: NiceAdmin
