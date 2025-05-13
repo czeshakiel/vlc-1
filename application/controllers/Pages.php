@@ -381,6 +381,20 @@
             }
             redirect(base_url().'add_trainee/'.$type."/".$datearray);
         }
+        public function update_trainee(){            
+            $save=$this->Payroll_model->save_trainee();
+            if($save){
+                $message="Trainee successfully saved!";
+                $username=$this->session->fullname;
+                $datearray=date('Y-m-d');
+                $timearray=date('H:i:s');
+                $this->Payroll_model->userlogs($message,$username,$datearray,$timearray);
+                $this->session->set_flashdata('save_success','Trainee successfully saved!');
+            }else{
+                $this->session->set_flashdata('save_failed','Unable to save trainee!');
+            }
+            redirect(base_url().'manage_trainee');
+        }
         public function delete_trainee($id,$description){
             $save=$this->Payroll_model->delete_trainee($id);
             if($save){

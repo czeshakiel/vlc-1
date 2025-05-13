@@ -93,6 +93,7 @@ $route['delete_users/(:any)/(:any)'] = 'pages/delete_users/$1/$2';
 $route['save_users'] = 'pages/save_users';
 $route['manage_users'] = 'pages/manage_users';
 //========================Trainee Module=======================================
+$route['update_trainee'] = 'pages/update_trainee';
 $route['delete_trainee/(:any)/(:any)'] = 'pages/delete_trainee/$1/$2';
 $route['save_trainee'] = 'pages/save_trainee';
 $route['manage_trainee'] = 'pages/manage_trainee';

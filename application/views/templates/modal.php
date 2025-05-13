@@ -223,7 +223,7 @@
                 <h5 class="modal-title">Manage Trainee</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <?=form_open(base_url()."save_trainee");?>
+            <?=form_open(base_url()."update_trainee");?>
             <input type="hidden" name="id" id="trainee_id">
             <input type="hidden" name="controlno" id="trainee_controlno">
             <div class="modal-body">
