@@ -250,7 +250,7 @@
                 <div class="form-group mb-1">
                     <label class="col-sm-2 control-label">Code</label>
                     <select name="code" class="form-select" id="trainee_code">
-                        <option value="">None</option>
+                        <option value="TDC">TDC</option>
                         <option value="1">1</option>
                         <option value="1&2">1 & 2</option>
                         <option value="2">2</option>
