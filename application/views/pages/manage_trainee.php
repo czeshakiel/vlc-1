@@ -93,7 +93,7 @@
                                 echo "<td>$branch[t_status]</td>";
                                 echo "<td><a href='#' class='btn btn-sm btn-warning editTrainee' data-bs-toggle='modal' data-bs-target='#managetrainee' data-id='$branch[id]'>Edit</a>";
                                 ?>
-                                <a href="<?=base_url();?>delete_trainee/<?=$branch['controlno'];?>/<?=$branch['lastname'];?>_<?=$branch['firstname'];?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this record?');return false;">Delete</a>
+                                <a href="<?=base_url();?>delete_trainee/<?=$branch['controlno'];?>/<?=$branch['lastname'];?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this record?');return false;">Delete</a>
                                 <?php
                                 echo "</td>";                                
                             echo "</tr>";
