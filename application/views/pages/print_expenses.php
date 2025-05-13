@@ -27,6 +27,83 @@
 <br>
     <table width="100%" border="0">
         <tr>
+            <td colspan="3">
+                <table border="1" width="100%" cellspacing="0" cellpadding="1" style="border-collapse: collapse;">
+                    <tr>
+                        <td align="center">NAME OF ENROLLEES</td>
+                        <td align="center">OR #</td>
+                        <td align="center">CODE</td>
+                        <td align="center">AMOUNT</td>
+                        <td align="center">COMMISSIONER</td>
+                        <td align="center">NOTES</td>
+                    </tr>
+                    <?php
+                    $totalpdc=0;
+                    foreach($pdc as $item){
+                        $comm=$this->Payroll_model->getSingleAgent($item['commissioner']);
+                        echo "<tr>";
+                            echo "<td>$item[lastname]</td>";
+                            echo "<td></td>";
+                            echo "<td align='center'>$item[code]</td>";
+                            echo "<td align='right'>".number_format($item['amount'],2)."</td>";
+                            echo "<td align='center'>$comm[firstname]</td>";
+                            echo "<td align='center'>$item[remarks]</td>";
+                        echo "</tr>";
+                        $totalpdc += $item['amount'];
+                    }
+                    foreach($addcode as $item){
+                        $comm=$this->Payroll_model->getSingleAgent($item['commissioner']);
+                        echo "<tr>";
+                            echo "<td>$item[lastname]</td>";
+                            echo "<td></td>";
+                            echo "<td align='center'>$item[code]</td>";
+                            echo "<td align='right'>".number_format($item['amount'],2)."</td>";
+                            echo "<td align='center'>$comm[firstname]</td>";
+                            echo "<td align='center'>$item[remarks]</td>";
+                        echo "</tr>";
+                        $totalpdc += $item['amount'];
+                    }
+                    ?>
+                    <tr>
+                        <td colspan="3" align="right"><b>TOTAL</b></td>
+                        <td align="right"><?=number_format($totalpdc,2);?></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">&nbsp;</td>
+                    </tr>
+                    <?php
+                    $totaltdc=0;
+                    foreach($tdc as $item){
+                        $comm=$this->Payroll_model->getSingleAgent($item['commissioner']);
+                        echo "<tr>";
+                            echo "<td>$item[lastname]</td>";
+                            echo "<td></td>";
+                            echo "<td align='center'>$item[code]</td>";
+                            echo "<td align='right'>".number_format($item['amount'],2)."</td>";
+                            echo "<td align='center'>$comm[firstname]</td>";
+                            echo "<td align='center'>$item[remarks]</td>";
+                        echo "</tr>";
+                        $totaltdc += $item['amount'];
+                    }
+                    ?>
+                    <tr>
+                        <td colspan="3" align="right"><b>TOTAL</b></td>
+                        <td align="right"><?=number_format($totaltdc,2);?></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" align="right"><b>TOTAL AMOUNT</b></td>
+                        <td align="right"><?=number_format($totaltdc+$totalpdc,2);?></td>
+                        <td colspan="2"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">&nbsp</td>
+        </tr>
+        <tr>
             <td style="vertical-align:top; width:35%;">
                 <table border="1" width="100%" cellspacing="0" cellpadding="1" style="border-collapse: collapse;">
                     <tr>

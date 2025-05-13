@@ -30,7 +30,7 @@ if($type=="All"){
                 $comm=$this->Payroll_model->getSingleAgent($item['commissioner']);                
                 echo "<tr>";
                     echo "<td>$x.</td>";
-                    echo "<td>$item[lastname], $item[firstname]</td>";
+                    echo "<td>$item[lastname]</td>";
                     echo "<td align='center'>$item[type]</td>";
                     echo "<td align='center'>$item[code]</td>";                    
                     echo "<td align='right'>".number_format($item['amount'],2)."</td>";
