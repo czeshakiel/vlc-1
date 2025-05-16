@@ -65,15 +65,19 @@
                         foreach($payroll as $branch){                            
                             $query=$this->Payroll_model->db->query("SELECT * FROM branch WHERE id='$branch[branch]'");
                             $br=$query->row_array(); 
+                            $delete="style='display:none;'";
+                            $payslip="";
                             $qry=$this->Payroll_model->db->query("SELECT * FROM payroll_daily WHERE payroll_period='$branch[id]'");
-                            $res=$qry->row_array(); 
-                            if($res['status']=="pending"){
-                              $delete="";
-                              $payslip="style='display:none;'";
-                            }else{
-                              $delete="style='display:none;'";
-                              $payslip="";
-                            }
+                            if($qry->num_rows() > 0){
+                              $res=$qry->row_array(); 
+                              if($res['status']=="pending"){
+                                $delete="";
+                                $payslip="style='display:none;'";
+                              }else{
+                                $delete="style='display:none;'";
+                                $payslip="";
+                              }
+                            }                                                      
                             // if(count($this->Payroll_model->checkPeriod($branch['id'])) > 0){
                             //   $view="style='display:none;'";
                             // }else{
