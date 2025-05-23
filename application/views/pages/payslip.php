@@ -143,12 +143,12 @@
 	            <table width="100%" border="0" style="font-size: 12px;">
 	            	<tr>
 	            		<td>PDC</td>
-	            		<td>&nbsp;</td>	
+	            		<td><?=$item['no_of_heads_pdc'];?></td>	
 	            		<td align="right"><?=number_format($pdc/$per_head,2);?></td>
 	            	</tr>
 	            	<tr>
 	            		<td>TDC</td>
-	            		<td>&nbsp;</td>	
+	            		<td><?=$item['no_of_heads_tdc'];?></td>	
 	            		<td align="right"><?=number_format($tdc/$per_head,2);?></td>            		
 	            	</tr>
 					<?php					
