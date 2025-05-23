@@ -40,8 +40,13 @@
 
             $deduction=$this->Payroll_model->getAllDeduction($branch['payroll_period'],$branch['empid']);
             $deduct_total=0;
+            $total_deduct=0;
             foreach($deduction as $item){
-                $deduct_total += $item['amount'];
+                if($item['description']=="Cash Advance"){
+                    $deduct_total += $item['amount'];
+                }else{
+                    $total_deduct += $item['amount'];
+                }
             }
             $net=(($branch['salary']*$branch['no_of_days_work'])+$adjusttotal) - $fixdeduct - $deduct_total;
             $gross=($branch['salary']*$branch['no_of_days_work'])+$adjusttotal;
@@ -56,7 +61,7 @@
                 echo "<td align='center'>$branch[no_of_days_work]</td>";
                 echo "<td align='right'>".number_format($adjusttotal,2)."</td>";
                 echo "<td align='right'>".number_format($gross,2)."</td>";
-                echo "<td align='right'>".number_format($fixdeduct,2)."</td>";
+                echo "<td align='right'>".number_format($fixdeduct+$total_deduct,2)."</td>";
                 echo "<td align='right'>".number_format($deduct_total,2)."</td>";
                 echo "<td align='right'><b>".number_format($net,2)."</b></td>";
                 // echo "<td>&nbsp;</td>";
@@ -112,8 +117,13 @@
             }
             $deduction=$this->Payroll_model->getAllDeduction($branch['payroll_period'],$branch['empid']);
             $deduct_total=0;
+            $total_deduct=0;
             foreach($deduction as $item){
-                $deduct_total += $item['amount'];
+                if($item['description']=="Cash Advance"){
+                    $deduct_total += $item['amount'];
+                }else{
+                    $total_deduct += $item['amount'];
+                }
             }
             $pdc=$branch['no_of_heads_pdc']*60;
             $tdc=$branch['no_of_heads_tdc']*80;
@@ -129,7 +139,7 @@
                 echo "<td align='center'>$branch[no_of_heads_tdc]</td>";
                 echo "<td align='right'>".number_format($adjusttotal,2)."</td>";
                 echo "<td align='right'>".number_format($gross,2)."</td>";
-                echo "<td align='right'>".number_format($fixdeduct,2)."</td>";
+                echo "<td align='right'>".number_format($fixdeduct+$total_deduct,2)."</td>";
                 echo "<td align='right'>".number_format($deduct_total,2)."</td>";
                 echo "<td align='right'><b>".number_format($net,2)."</b></td>";
                 // echo "<td>&nbsp;</td>";
