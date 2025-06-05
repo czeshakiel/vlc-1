@@ -92,7 +92,7 @@
 	            	</tr>
 	            	<tr>
 	            		<td><b>Net Pay.........</b></td>
-	            		<td colspan="2" align="right"><b><?=number_format((($item['no_of_days_work']*$item['salary'])+$item['adjustment'])-$totaldeduction,2);?></b></td>
+	            		<td colspan="2" align="right"><b><?=number_format((($item['no_of_days_work']*$item['salary'])+$totaladjustment)-$totaldeduction,2);?></b></td>
 	            	</tr>
 	            </table>
 	            
