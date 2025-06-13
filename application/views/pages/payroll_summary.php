@@ -103,7 +103,7 @@
         $totalgross=0;
         $totaladjustment=0;
         $totaldeduction=0;
-        $per_head=4;
+        $per_head=1;
         foreach($payroll_per_head as $branch){
             $adjustment=$this->Payroll_model->getAllAdjustment($branch['payroll_period'],$branch['empid']);			
             $adjusttotal=0;
@@ -125,8 +125,11 @@
                     $total_deduct += $item['amount'];
                 }
             }
-            $pdc=$branch['no_of_heads_pdc']*60;
-            $tdc=$branch['no_of_heads_tdc']*80;
+            $pdc=$branch['no_of_heads_pdc']*30;
+            $tdc=$branch['no_of_heads_tdc']*30;
+            if($branch['empid']=="01"){
+                $tdc=$branch['no_of_heads_tdc']*40;
+            }
             $gross=(($pdc+$tdc)/$per_head) + $adjusttotal;
             $net=$gross - $fixdeduct - $deduct_total;
             if($net < 0){
