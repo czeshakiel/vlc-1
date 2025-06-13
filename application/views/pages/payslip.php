@@ -131,7 +131,7 @@
             $tdc=$item['no_of_heads_tdc']*$comp['tdc'];
             $gross=(($pdc+$tdc)/$per_head) + $totaladjustment;			
 			?>
-<div style="width: 45%; margin-right: 20px; float: left;">
+<div style="width: 45%; margin-right: 20px; float: left; margin-bottom: 50px;">
 <table width="100%" border="0" style="font-size: 12px;" cellspacing="0" cellpadding="0">
 	<tr>		
 			<td style="border:0px solid black;">
