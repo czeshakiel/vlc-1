@@ -155,7 +155,7 @@
                 </thead>
                 <tbody>
                   <?php 
-                      $per_head=4; 
+                      $per_head=1; 
                         foreach($payroll_per_head as $branch){                            
                             $query=$this->Payroll_model->db->query("SELECT * FROM branch WHERE id='$branch[branch]'");
                             $br=$query->row_array();   
@@ -164,8 +164,12 @@
                             foreach($adjustment as $item){
                               $totaladjustment += $item['amount'];
                             }
-                            $pdc=$branch['no_of_heads_pdc']*60;
-                            $tdc=$branch['no_of_heads_tdc']*80;
+                            $pdc=$branch['no_of_heads_pdc']*30;
+                            $tdc=$branch['no_of_heads_tdc']*30;
+                            if($brand['empid']=="01"){
+                              $pdc=$branch['no_of_heads_pdc']*30;
+                              $tdc=$branch['no_of_heads_tdc']*40;
+                            }
                             $gross=(($pdc+$tdc)/$per_head) + $totaladjustment;
                             $net=$gross - $branch['deduction'];
                             $ded=$this->Payroll_model->db->query("SELECT SUM(amount) as deduction FROM deduction WHERE payroll_period='$payroll_period' AND empid='$branch[empid]' AND branch='$branch[branch]'");
