@@ -166,7 +166,7 @@
                             }
                             $pdc=$branch['no_of_heads_pdc']*30;
                             $tdc=$branch['no_of_heads_tdc']*30;
-                            if($brand['empid']=="01"){
+                            if($branch['empid']=="01"){
                               $pdc=$branch['no_of_heads_pdc']*30;
                               $tdc=$branch['no_of_heads_tdc']*40;
                             }
