@@ -129,9 +129,9 @@
 				$per_head=$comp['employee'];
 			$pdc=$item['no_of_heads_pdc']*$comp['pdc'];
             $tdc=$item['no_of_heads_tdc']*$comp['tdc'];
-			if($item['empid'=="01"]{
+			if($item['empid']=="01"){
 				$tdc=$item['no_of_heads_tdc']*40;
-			})
+			}
             $gross=(($pdc+$tdc)/$per_head) + $totaladjustment;			
 			?>
 <div style="width: 45%; margin-right: 20px; float: left; margin-bottom: 50px;">
