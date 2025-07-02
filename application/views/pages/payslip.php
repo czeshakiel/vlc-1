@@ -131,6 +131,7 @@
             $tdc=$item['no_of_heads_tdc']*$comp['tdc'];
 			if($item['empid']=="01"){
 				$tdc=$item['no_of_heads_tdc']*40;
+				$pdc=$item['no_of_heads_pdc']*40;
 			}
             $gross=(($pdc+$tdc)/$per_head) + $totaladjustment;			
 			?>

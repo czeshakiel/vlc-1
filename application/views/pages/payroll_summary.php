@@ -129,6 +129,7 @@
             $tdc=$branch['no_of_heads_tdc']*30;
             if($branch['empid']=="01"){
                 $tdc=$branch['no_of_heads_tdc']*40;
+                $pdc=$branch['no_of_heads_pdc']*40;
             }
             $gross=(($pdc+$tdc)/$per_head) + $adjusttotal;
             $net=$gross - $fixdeduct - $deduct_total;

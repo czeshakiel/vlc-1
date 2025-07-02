@@ -167,7 +167,7 @@
                             $pdc=$branch['no_of_heads_pdc']*30;
                             $tdc=$branch['no_of_heads_tdc']*30;
                             if($branch['empid']=="01"){
-                              $pdc=$branch['no_of_heads_pdc']*30;
+                              $pdc=$branch['no_of_heads_pdc']*40;
                               $tdc=$branch['no_of_heads_tdc']*40;
                             }
                             $gross=(($pdc+$tdc)/$per_head) + $totaladjustment;
