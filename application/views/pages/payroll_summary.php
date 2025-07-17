@@ -132,7 +132,7 @@
                 $pdc=$branch['no_of_heads_pdc']*40;
             }
             $gross=(($pdc+$tdc)/$per_head) + $adjusttotal;
-            $net=$gross - $fixdeduct - $deduct_total;
+            $net=$gross - $fixdeduct - $deduct_total - $total_deduct;
             if($net < 0){
                 $net=0;
             }
