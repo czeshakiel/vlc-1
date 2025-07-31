@@ -61,6 +61,7 @@ $route['delete_adjustment/(:any)/(:any)/(:any)/(:any)'] = 'pages/delete_adjustme
 $route['save_adjustment'] = 'pages/save_adjustment';
 $route['manage_adjustment/(:any)/(:any)'] = 'pages/manage_adjustment/$1/$2';
 $route['print_payslip/(:any)'] = 'pages/print_payslip/$1';
+$route['payroll_summary_printable/(:any)'] = 'pages/payroll_summary_printable/$1';
 $route['payroll_summary/(:any)'] = 'pages/payroll_summary/$1';
 $route['unpost_payroll/(:any)'] = 'pages/unpost_payroll/$1';
 $route['delete_payrollperiod/(:any)'] = 'pages/delete_payrollperiod/$1';
