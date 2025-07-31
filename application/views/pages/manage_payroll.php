@@ -93,7 +93,7 @@
                                 <a href="<?=base_url();?>payroll_manager/<?=$branch['id'];?>" class="btn btn-success btn-sm">Manage Payroll</a>
                                 <a href="<?=base_url();?>print_payslip/<?=$branch['id'];?>" class="btn btn-primary btn-sm" target="_blank" <?=$payslip;?>>Print Payslip</a>
                                 <a href="<?=base_url();?>payroll_summary/<?=$branch['id'];?>" class="btn btn-info btn-sm" target="_blank" <?=$payslip;?>>Payroll Summary</a>                                
-                                <a href="<?=base_url();?>payroll_summary_printable/<?=$branch['id'];?>" class="btn btn-warning btn-sm" target="_blank" <?=$payslip;?>>Payroll Summary Printable</a>                                
+                                <!-- <a href="<?=base_url();?>payroll_summary_printable/<?=$branch['id'];?>" class="btn btn-warning btn-sm" target="_blank" <?=$payslip;?>>Payroll Summary Printable</a>                                 -->
                                 <?php
                                 echo "</td>";                                
                             echo "</tr>";
