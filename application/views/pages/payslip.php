@@ -5,7 +5,7 @@
 		foreach($payroll_daily as $item){
 			$des=$this->Payroll_model->getEmployeeDetails($item['empid']);
 			$deduction=$this->Payroll_model->getDeduction($item['payroll_period'],$item['empid']);
-			$fixed_deduction=$this->Payroll_model->getAllFixedDeduction($item['empid']);
+			//$fixed_deduction=$this->Payroll_model->getAllFixedDeduction($item['empid']);
 			$adjustment=$this->Payroll_model->getAllAdjustment($item['payroll_period'],$item['empid']);
 			$totaladjustment=0;
 						foreach($adjustment as $row){
@@ -69,15 +69,20 @@
 	            		<?php
 	            		$totaldeduction += $row['amount'];
 	            	}
-					foreach($fixed_deduction as $row){
+					if($item['fdeduct_desc'] <> ""){
+					$fdeduct_desc=explode(';',$item['fdeduct_desc']);
+					$fdeduct_amount=explode(';',$item['fdeduct_amount']);
+					for($i=0;$i<sizeof($fdeduct_desc);$i++){
 	            		?>
 	            		<tr>
-		            		<td><?=$row['description'];?></td>
-		            		<td colspan="2" align="right"><?=number_format($row['amount'],2);?></td>
+							
+		            		<td><?=$fdeduct_desc[$i];?></td>
+		            		<td colspan="2" align="right"><?=$fdeduct_amount[$i];?></td>
 	            		</tr>
 	            		<?php
-	            		$totaldeduction += $row['amount'];
+						$totaldeduction += floatval($fdeduct_amount[$i]);
 	            	}
+					}
 	            	?>
 	            	<tr>
 	            		<td colspan="3">&nbsp;</td>
@@ -119,7 +124,7 @@
 		foreach($payroll_per_head as $item){
 			$des=$this->Payroll_model->getEmployeeDetails($item['empid']);
 			$deduction=$this->Payroll_model->getDeduction($item['payroll_period'],$item['empid']);
-			$fixed_deduction=$this->Payroll_model->getAllFixedDeduction($item['empid']);
+			//$fixed_deduction=$this->Payroll_model->getAllFixedDeduction($item['empid']);
 			$adjustment=$this->Payroll_model->getAllAdjustment($item['payroll_period'],$item['empid']);
 			$totaladjustment=0;
 	            foreach($adjustment as $row){
@@ -193,15 +198,20 @@
 	            		<?php
 	            		$totaldeduction += $row['amount'];
 	            	}
-					foreach($fixed_deduction as $row){
+					if($item['fdeduct_desc'] <> ""){
+					$fdeduct_desc=explode(';',$item['fdeduct_desc']);
+					$fdeduct_amount=explode(';',$item['fdeduct_amount']);
+					for($i=0;$i<sizeof($fdeduct_desc);$i++){
 	            		?>
 	            		<tr>
-		            		<td><?=$row['description'];?></td>
-		            		<td colspan="2" align="right"><?=number_format($row['amount'],2);?></td>
+							
+		            		<td><?=$fdeduct_desc[$i];?></td>
+		            		<td colspan="2" align="right"><?=$fdeduct_amount[$i];?></td>
 	            		</tr>
 	            		<?php
-	            		$totaldeduction += $row['amount'];
+						$totaldeduction += floatval($fdeduct_amount[$i]);
 	            	}
+					}
 	            	?>
 	            	<tr>
 	            		<td colspan="3">&nbsp;</td>

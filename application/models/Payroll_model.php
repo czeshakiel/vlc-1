@@ -537,10 +537,20 @@
         }
         public function save_payroll($payroll_period,$empid,$is_daily,$required_days,$days_worked,$adjustment,$discount){
             $branch=$this->session->branch;
+            $fdeduct_desc="";
+            $fdeduct_amount="";
+            $sql=$this->db->query("SELECT * FROM fixed_deduction WHERE empid='$empid' AND branch='$branch'");
+            if($sql->num_rows()>0){
+                $items=$sql->result_array();
+                foreach($items as $row){
+                    $fdeduct_desc .= $row['description'].";";
+                    $fdeduct_amount .= $row['amount'].";";
+                }
+            }
             if($is_daily==1){
-                $result=$this->db->query("UPDATE payroll_daily SET no_of_days_required='$required_days',no_of_days_work='$days_worked',adjustment='$adjustment',deduction='$discount' WHERE empid='$empid' AND payroll_period='$payroll_period' AND branch='$branch'");
+                $result=$this->db->query("UPDATE payroll_daily SET no_of_days_required='$required_days',no_of_days_work='$days_worked',adjustment='$adjustment',deduction='$discount',fdeduct_desc='$fdeduct_desc',fdeduct_amount='$fdeduct_amount' WHERE empid='$empid' AND payroll_period='$payroll_period' AND branch='$branch'");
             }else{
-                $result=$this->db->query("UPDATE payroll_per_head SET no_of_heads_pdc='$required_days',no_of_heads_tdc='$days_worked',adjustment='$adjustment',deduction='$discount' WHERE empid='$empid' AND payroll_period='$payroll_period' AND branch='$branch'");
+                $result=$this->db->query("UPDATE payroll_per_head SET no_of_heads_pdc='$required_days',no_of_heads_tdc='$days_worked',adjustment='$adjustment',deduction='$discount',fdeduct_desc='$fdeduct_desc',fdeduct_amount='$fdeduct_amount' WHERE empid='$empid' AND payroll_period='$payroll_period' AND branch='$branch'");
             }            
             if($result){
                 return true;

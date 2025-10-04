@@ -106,6 +106,7 @@
                             if($deduction==""){
                               $deduction=0;
                             } 
+                            $net=(($branch['salary']*$branch['no_of_days_work'])+$totaladjustment) - $deduction;
                             if($branch['status']=="pending"){
                               $button="<a href='".base_url()."manage_deduction/$payroll_period/$branch[empid]'>".number_format($deduction,2)."</a>";
                               $stat="";
@@ -122,16 +123,16 @@
                                 echo "<td>$branch[lastname], $branch[firstname] $branch[middlename] $branch[suffix]</td>";                                
                                 echo "<td align='right'>$branch[salary]</td>";
                                 echo "<td><input width='10%' style='text-align:center;' type='text' name='required_days[]' class='form-control' value='$branch[no_of_days_required]' $stat></td>";
-                                echo "<td><input width='10%' style='text-align:center;' type='text' name='days_worked[]' class='form-control' value='$branch[no_of_days_work]' $stat></td>";
+                                echo "<td><input width='10%' style='text-align:center;' type='text' name='days_worked[]' class='form-control' value='$branch[no_of_days_work]' $stat onchange='calculateGrossDaily(".$branch['salary'].",this.value,$totaladjustment,$deduction)'></td>";
                                 echo "<td align='right'>
                                 $adjust
                                 <input width='10%' type='hidden' style='text-align:right;' name='adjustment[]' class='form-control' value='$totaladjustment'></td>";                                
-                                echo "<td align='right'>".number_format($gross,2)."</td>";                                
+                                echo "<td align='right'><span id='grossDaily'>".number_format($gross,2)."</span></td>";                                
                                 echo "<td align='right'>
                                   $button
                                   <input type='hidden' name='deduction[]' class='form-control' value='$deduction'>
                                 </td>";                                
-                                echo "<td align='right'>".number_format($net,2)."</td>";
+                                echo "<td align='right'><span id='netDaily'>".number_format($net,2)."</span></td>";
                             echo "</tr>";
                             $x++;
                         }                        
@@ -171,13 +172,14 @@
                               $tdc=$branch['no_of_heads_tdc']*40;
                             }
                             $gross=(($pdc+$tdc)/$per_head) + $totaladjustment;
-                            $net=$gross - $branch['deduction'];
+                            
                             $ded=$this->Payroll_model->db->query("SELECT SUM(amount) as deduction FROM deduction WHERE payroll_period='$payroll_period' AND empid='$branch[empid]' AND branch='$branch[branch]'");
                             $deduct=$ded->row_array();
                             $deduction=$deduct['deduction'];                            
                             if($deduction==""){
                               $deduction=0;
                             }
+                            $net=$gross - $deduction;
                             if($branch['status']=="pending"){
                               $button="<a href='".base_url()."manage_deduction/$payroll_period/$branch[empid]'>".number_format($deduction,2)."</a>";
                               $stat="";
@@ -192,17 +194,17 @@
                             echo "<tr>";
                                 echo "<td>$x.</td>";                                
                                 echo "<td>$branch[lastname], $branch[firstname] $branch[middlename] $branch[suffix]</td>";                                                                
-                                echo "<td><input width='10%' style='text-align:center;' type='text' name='required_days[]' class='form-control' value='$branch[no_of_heads_pdc]' $stat></td>";
-                                echo "<td><input width='10%' style='text-align:center;' type='text' name='days_worked[]' class='form-control' value='$branch[no_of_heads_tdc]' $stat></td>";
+                                echo "<td><input width='10%' style='text-align:center;' type='text' name='required_days[]' class='form-control' value='$branch[no_of_heads_pdc]' $stat onchange='calculateGrossPerHead($deduction,$totaladjustment)' id='PDC'></td>";
+                                echo "<td><input width='10%' style='text-align:center;' type='text' name='days_worked[]' class='form-control' value='$branch[no_of_heads_tdc]' $stat onchange='calculateGrossPerHead($deduction,$totaladjustment)' id='TDC'></td>";
                                 echo "<td align='right'>
                                 $adjust
                                 <input width='10%' type='hidden' style='text-align:right;' name='adjustment[]' class='form-control' value='$totaladjustment' $stat></td>";                                
-                                echo "<td align='right'>".number_format($gross,2)."</td>";                                
+                                echo "<td align='right'><span id='grossPerHead'>".number_format($gross,2)."</span></td>";                                
                                 echo "<td align='right'>
                                   $button
                                   <input type='hidden' name='deduction[]' class='form-control' value='$deduction'>
                                 </td>";
-                                echo "<td align='right'>".number_format($net,2)."</td>";
+                                echo "<td align='right'><span id='netPerHead'>".number_format($net,2)."</span></td>";
                             echo "</tr>";
                             $x++;
                         }                        
@@ -221,3 +223,33 @@
     </section>
 
   </main><!-- End #main -->
+  <script>
+    // function formatNumber(number)
+    // {
+    //     number = number.toFixed(2) + '';
+    //     x = number.split('.');
+    //     x1 = x[0];
+    //     x2 = x.length > 1 ? '.' + x[1] : '';
+    //     var rgx = /(\d+)(\d{3})/;
+    //     while (rgx.test(x1)) {
+    //         x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    //     }
+    //     return x1 + x2;
+    // }
+    // function calculateGrossPerHead(deduction,adjustment){
+    //   var pdc = document.getElementById('PDC').value;
+    //   var tdc = document.getElementById('TDC').value;
+    //   var totalgross = (tdc * 40) + (pdc * 40);
+    //   var gross = formatNumber(totalgross);
+    //   var net = formatNumber(totalgross+adjustment-deduction);
+    //   document.getElementById('grossPerHead').innerHTML = gross;
+    //   document.getElementById('netPerHead').innerHTML = net;
+    // }
+    // function calculateGrossDaily(salary,worked,adjustment,deduction){
+    //   var totalgross = salary*worked;
+    //   var gross = formatNumber(totalgross);
+    //   var net = formatNumber(totalgross+adjustment-deduction);
+    //   document.getElementById('grossDaily').innerHTML = gross;
+    //   document.getElementById('netDaily').innerHTML = net;
+    // }
+    </script>

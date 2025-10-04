@@ -32,10 +32,10 @@
             foreach($adjustment as $row){
                 $adjusttotal += $row['amount'];
             }
-            $fixed_deduction=$this->Payroll_model->getAllFixedDeduction($branch['empid']);
+            $fixed_deduction=explode(';',$branch['fdeduct_amount']);
             $fixdeduct=0;
-            foreach($fixed_deduction as $row){
-                $fixdeduct += $row['amount'];
+            for($i=0;$i<sizeof($fixed_deduction);$i++){
+                $fixdeduct += floatval($fixed_deduction[$i]);
             }
 
             $deduction=$this->Payroll_model->getAllDeduction($branch['payroll_period'],$branch['empid']);
@@ -110,10 +110,10 @@
             foreach($adjustment as $row){
                 $adjusttotal += $row['amount'];
             }
-            $fixed_deduction=$this->Payroll_model->getAllFixedDeduction($branch['empid']);
+            $fixed_deduction=explode(';',$branch['fdeduct_amount']);
             $fixdeduct=0;
-            foreach($fixed_deduction as $row){
-                $fixdeduct += $row['amount'];
+            for($i=0;$i<sizeof($fixed_deduction);$i++){
+                $fixdeduct += floatval($fixed_deduction[$i]);
             }
             $deduction=$this->Payroll_model->getAllDeduction($branch['payroll_period'],$branch['empid']);
             $deduct_total=0;
