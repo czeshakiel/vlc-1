@@ -58,6 +58,11 @@
             </a>
           </li>
           <li>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#generateBonus">
+              <i class="bi bi-circle"></i><span>Extra</span>
+            </a>
+          </li>
+          <li>
             <a href="#" data-bs-toggle="modal" data-bs-target="#generateEnrollee">
               <i class="bi bi-circle"></i><span>Enrollee</span>
             </a>

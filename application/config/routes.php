@@ -50,6 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 //========================Reports Module=======================================
+$route['print_bonus'] = 'pages/print_bonus';
 $route['print_expenses'] = 'pages/print_expenses';
 //========================Deduction Module=====================================
 $route['delete_deduction/(:any)/(:any)/(:any)/(:any)'] = 'pages/delete_deduction/$1/$2/$3/$4';

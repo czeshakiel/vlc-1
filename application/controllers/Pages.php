@@ -1356,6 +1356,45 @@
             $mpdf->WriteHTML($html);
             $mpdf->Output();*/
         }
+
+        public function print_bonus(){
+            $page="print_bonus";
+            if(!file_exists(APPPATH.'views/pages/'.$page.".php")){
+                show_404();
+            }            
+            if($this->session->user_login){
+                
+            }else{
+              redirect(base_url()."main");
+            }            
+            $startdate=$this->input->post('startdate');
+            $enddate=$this->input->post('enddate');
+            $branch=$this->input->post('branch');
+            $data['startdate']=$startdate;
+            $data['enddate']=$enddate;
+            $data['branch']=$branch;
+            $data['items'] = $this->Payroll_model->getAllEmployee();                        
+            $html = $this->load->view('pages/'.$page,$data);
+            /*$mpdf = new \Mpdf\Mpdf([
+                    'setAutoTopMargin' => 'stretch',
+                    'margin_left' => 10,
+                    'margin_right' => 10,
+                    'setAutoBottomMargin' => 'stretch'
+            ]);
+            $mpdf->setHTMLHeader('
+            <div align="center">
+			 <b style="font-size:20px;">VLC DRIVING TUTORIAL SERVICES</b><br>
+             <b>Kidapawan City</b><br><br>
+             '.$type.' '.$interval.' ENROLLEES<br><br>             
+             </div>   
+             <div>
+             '.$date.'
+             </div>          
+            ');
+            $mpdf->autoPageBreak = true;
+            $mpdf->WriteHTML($html);
+            $mpdf->Output();*/
+        }
         //====================================End of Reports==========================================
     }
 ?>

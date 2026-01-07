@@ -836,5 +836,9 @@
                 return false;
             }
         }
+        public function getAllBonusDaily($startdate,$enddate,$empid,$branch){
+            $result=$this->db->query("SELECT * FROM payroll_daily WHERE date_created BETWEEN '$startdate' AND '$enddate' AND branch='$branch' AND empid='$empid'");
+            return $result->result_array();
+        }
     }
 ?>
