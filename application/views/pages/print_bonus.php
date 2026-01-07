@@ -15,13 +15,22 @@
         </tr>
         <?php
         $x=1;
+        $days=0;
         foreach($items as $item){
             $bonus=0;
             if($item['is_daily']==1){
-                $query=$this->Payroll_model->getAllBonusDaily($startdate,$enddate,$item['empid'],$branch);
+                $query=$this->Payroll_model->getAllBonusDaily($startdate,$enddate,$item['empid'],$branch);                
                 foreach($query as $amount){
-                    $bonus += ($amount['salary']*$amount['no_of_days_work']) + $amount['adjustment'];
+                    if($item['empid']=="04"){
+                        $salary=500;
+                        $days += $amount['no_of_days_work'];
+                    }else{
+                        $salary=420;
+                    }
+                    $bonus += ($salary*$amount['no_of_days_work']);
                 }
+            }else{                
+                $bonus = $days*420;
             }
             echo "<tr>";
                 echo "<td>$x.</td>";
