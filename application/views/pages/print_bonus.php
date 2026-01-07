@@ -29,8 +29,14 @@
                     }
                     $bonus += ($salary*$amount['no_of_days_work']);
                 }
+                if(date('Y',strtotime($startdate))==2025){
+                    $bonus += $salary*83;
+                }                
             }else{                
                 $bonus = $days*420;
+                if(date('Y',strtotime($startdate))==2025){
+                    $bonus = $bonus+(420*83);
+                }                
             }
             echo "<tr>";
                 echo "<td>$x.</td>";
