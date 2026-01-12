@@ -885,9 +885,10 @@
             $days_worked=$this->input->post('days_worked');
             $adjustment=$this->input->post('adjustment');
             $deduction=$this->input->post('deduction');
+            $ndw=$this->input->post('no_days_worked');
             $x=0;
             foreach($empid as $code){
-                $result=$this->Payroll_model->save_payroll($payroll_period,$code,$is_daily[$x],$required_days[$x],$days_worked[$x],$adjustment[$x],$deduction[$x]);
+                $result=$this->Payroll_model->save_payroll($payroll_period,$code,$is_daily[$x],$required_days[$x],$days_worked[$x],$adjustment[$x],$deduction[$x],$ndw[$x]);
                 $x++;
             }
             if($result){

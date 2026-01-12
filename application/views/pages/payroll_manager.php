@@ -115,7 +115,8 @@
                               $stat="disabled";
                               $button=number_format($deduction,2);
                               $adjust=number_format($totaladjustment);
-                            }                           
+                            }   
+                            echo "<td><input width='10%' style='text-align:center;' type='hidden' name='no_days_worked[]' class='form-control' value='0' $stat></td>";                        
                             echo "<input type='hidden' name='is_daily[]' value='1'>";
                             echo "<input type='hidden' name='empid[]' value='$branch[empid]'>";
                             echo "<tr>";
@@ -148,6 +149,7 @@
                     <th scope="col">Name</th>                    
                     <th scope="col" width='10%'>PDC</th>                    
                     <th scope="col" width='10%'>TDC</th>
+                    <th scope="col" width='10%'>Days Worked</th>
                     <th scope="col">Adjustment</th>
                     <th scope="col">Gross</th>
                     <th scope="col">Deduction</th>
@@ -196,6 +198,7 @@
                                 echo "<td>$branch[lastname], $branch[firstname] $branch[middlename] $branch[suffix]</td>";                                                                
                                 echo "<td><input width='10%' style='text-align:center;' type='text' name='required_days[]' class='form-control' value='$branch[no_of_heads_pdc]' $stat onchange='calculateGrossPerHead($deduction,$totaladjustment)' id='PDC'></td>";
                                 echo "<td><input width='10%' style='text-align:center;' type='text' name='days_worked[]' class='form-control' value='$branch[no_of_heads_tdc]' $stat onchange='calculateGrossPerHead($deduction,$totaladjustment)' id='TDC'></td>";
+                                echo "<td><input width='10%' style='text-align:center;' type='text' name='no_days_worked[]' class='form-control' value='$branch[no_of_days_work]' $stat></td>";
                                 echo "<td align='right'>
                                 $adjust
                                 <input width='10%' type='hidden' style='text-align:right;' name='adjustment[]' class='form-control' value='$totaladjustment' $stat></td>";                                

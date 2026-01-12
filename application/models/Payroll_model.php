@@ -535,7 +535,7 @@
             $result=$this->db->query("SELECT pd.*,e.* FROM payroll_per_head pd INNER JOIN employee e ON e.empid=pd.empid WHERE pd.payroll_period='$id'");
             return $result->result_array();
         }
-        public function save_payroll($payroll_period,$empid,$is_daily,$required_days,$days_worked,$adjustment,$discount){
+        public function save_payroll($payroll_period,$empid,$is_daily,$required_days,$days_worked,$adjustment,$discount,$ndw){
             $branch=$this->session->branch;
             $fdeduct_desc="";
             $fdeduct_amount="";
@@ -550,7 +550,7 @@
             if($is_daily==1){
                 $result=$this->db->query("UPDATE payroll_daily SET no_of_days_required='$required_days',no_of_days_work='$days_worked',adjustment='$adjustment',deduction='$discount',fdeduct_desc='$fdeduct_desc',fdeduct_amount='$fdeduct_amount' WHERE empid='$empid' AND payroll_period='$payroll_period' AND branch='$branch'");
             }else{
-                $result=$this->db->query("UPDATE payroll_per_head SET no_of_heads_pdc='$required_days',no_of_heads_tdc='$days_worked',adjustment='$adjustment',deduction='$discount',fdeduct_desc='$fdeduct_desc',fdeduct_amount='$fdeduct_amount' WHERE empid='$empid' AND payroll_period='$payroll_period' AND branch='$branch'");
+                $result=$this->db->query("UPDATE payroll_per_head SET no_of_heads_pdc='$required_days',no_of_heads_tdc='$days_worked',adjustment='$adjustment',deduction='$discount',fdeduct_desc='$fdeduct_desc',fdeduct_amount='$fdeduct_amount',no_of_days_work='$ndw' WHERE empid='$empid' AND payroll_period='$payroll_period' AND branch='$branch'");
             }            
             if($result){
                 return true;
@@ -838,6 +838,10 @@
         }
         public function getAllBonusDaily($startdate,$enddate,$empid,$branch){
             $result=$this->db->query("SELECT * FROM payroll_daily WHERE date_created BETWEEN '$startdate' AND '$enddate' AND branch='$branch' AND empid='$empid'");
+            return $result->result_array();
+        }
+        public function getAllBonusHead($startdate,$enddate,$empid,$branch){
+            $result=$this->db->query("SELECT * FROM payroll_per_head WHERE date_created BETWEEN '$startdate' AND '$enddate' AND branch='$branch' AND empid='$empid'");
             return $result->result_array();
         }
     }

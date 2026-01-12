@@ -32,8 +32,16 @@
                 if(date('Y',strtotime($startdate))==2025){
                     $bonus += $salary*83;
                 }                
-            }else{                
-                $bonus = $days*420;
+            }else{
+                if(date('Y',strtotime($startdate))==2026){
+                    $query=$this->Payroll_model->getAllBonusHead($startdate,$enddate,$item['empid'],$branch);                
+                    foreach($query as $amount){
+                        $salary=420;
+                        $bonus += ($salary*$amount['no_of_days_work']);
+                    }
+                }else{
+                    $bonus=420*$days;
+                }
                 if(date('Y',strtotime($startdate))==2025){
                     $bonus = $bonus+(420*83);
                 }                
